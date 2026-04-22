@@ -106,6 +106,14 @@ jobs:
           echo "VERSION: $VERSION"
           echo "kernelsu_version=$VERSION" >> $GITHUB_ENV
 
+      - name: Apply Additional Kernel Patches
+        working-directory: android-kernel/common
+        run: |
+          echo "[+] Applying additional kernel patches"
+          curl -fL --retry 3 "https://github.com/android-generic/kernel-zenith/commit/dd2c602268fdc81f4d3b662f6a15142ac0ec7bcd.patch" | git apply --ignore-whitespace -
+          curl -fL --retry 3 "https://github.com/android-generic/kernel-zenith/commit/7d99237ae5da61c19447138da3282ae37d43857b.patch" | git apply --ignore-whitespace -
+          echo "[+] Additional patches applied successfully"
+
       - name: Make Working Directory Clean to Avoid Dirty
         working-directory: android-kernel
         run: |

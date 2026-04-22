@@ -24,14 +24,11 @@ jobs:
     strategy:
       matrix:
         include:
-          - version: "android-14-avd_x86_64"
-            manifest: "android-14-avd_x86_64.xml"
-            arch: "x86_64"
-          - version: "android-15-avd_aarch64"
-            manifest: "android-15-avd_aarch64.xml"
-            arch: "aarch64"
           - version: "android-15-avd_x86_64"
             manifest: "android-15-avd_x86_64.xml"
+            arch: "x86_64"
+          - version: "android-16-avd_x86_64"
+            manifest: "android-16-avd_x86_64.xml"
             arch: "x86_64"
     with:
       version_name: ${{ matrix.version }}
